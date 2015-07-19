@@ -58,6 +58,7 @@ function startDisconectedApp(){
 
 function startConectedApp(){
     alert('status da conexão: ' + conectado);
+    alert(localStorage.getItem('logged'))
     // checkLogged();
 }
 
