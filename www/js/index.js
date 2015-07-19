@@ -75,15 +75,15 @@ function checkConnection() {
 }
 
 // Inicia os trabalhos no App [1 = conectado / 0 = desconectado]
-function startDisconectedApp(){
+function startDisconectedAppjmio(){
     alert('status da conexão: ' + conectado);
-    checkLogged();
+    // checkLogged();
 }
 
 
 function startConectedApp(){
     alert('status da conexão: ' + conectado);
-    checkLogged();
+    // checkLogged();
 }
 
 // Verifica se o Usuário ja esteve logado na plataforma
