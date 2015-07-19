@@ -57,7 +57,10 @@ function startApp(){
     checkStatus();
 
     if(conectado == 1){ // verifica se estou logado
+
+        alert('estamos conectados')
         if(logged == 1 && status == 1){
+            alert('estamos logados e Ativos')
             // do logged things
             
             $('.loadd').fadeIn('fast');
@@ -87,6 +90,7 @@ function startApp(){
 
             window.location = "#youwin";
         }else{
+            alert('estamos deslogados ou inativos')
             if (document.URL.indexOf('youwin') > -1) {
                 window.location = "index.html"; // return false; 
             }
