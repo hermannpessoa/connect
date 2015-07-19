@@ -52,24 +52,21 @@ var app = {
 // Inicia os trabalhos no App [1 = conectado / 0 = desconectado]
 function startDisconectedApp(){
     alert('status da conexão: ' + conectado);
-    // checkLogged();
+    checkLogged();
 }
 
 
 function startConectedApp(){
     alert('status da conexão: ' + conectado);
-    alert(localStorage.getItem('logged'))
-    // checkLogged();
+    checkLogged();
 }
 
 // Verifica se o Usuário ja esteve logado na plataforma
 function checkLogged(){
-    if(localStorage.getItem('logged') > 0){
-        alert('Já estou logado')
-        logged = 1
-    }else{
+     if(localStorage.getItem('logged') !== 1){
         alert('Não estou logado')
-        logged = 0
+    }else{
+        alert('Já estou logado')
     }
 }
 
