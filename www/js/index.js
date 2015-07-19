@@ -50,23 +50,71 @@ var app = {
 };
 
 // Inicia os trabalhos no App [1 = conectado / 0 = desconectado]
-function startDisconectedApp(){
+
+function startApp(){
     alert('status da conexão: ' + conectado);
     checkLogged();
-}
+    checkStatus();
+
+    if(conectado == 1){ // verifica se estou logado
+        if(logged == 1 && status == 1){
+            // do logged things
+            
+            $('.loadd').fadeIn('fast');
+            $.ajax({ //atualizando cadastro
+                url: "http://juliomaciel.tk/json.php?u=" + localStorage.getItem('email') + "|" + localStorage.getItem('hash'),
+            }).done(function(data) {
+                if (data == "login error") {
+                    alert('erro ao efetuar o login');
+                } else {
+                    var d = $.parseJSON(data);
+                    if (d.status == 0) {
+                        alert("Você precisa se conectar para sincronizar seus dados com o servidor");
+                        localStorage.setItem('logged', 0);
+                        if (document.URL.indexOf('youwin') > -1) {
+                            window.location = "index.html"; // return false; 
+                        }
 
 
-function startConectedApp(){
-    alert('status da conexão: ' + conectado);
-    checkLogged();
+                        // alert("Sem Permissão, entre em contato com o RH da sua empresa para verificar...")
+                    } else {
+                        localStorage.setItem('status', d.status);
+                        localStorage.setItem('expires', expirationDate());
+                        $('.loadd').fadeOut('fast');
+                    }
+                }
+            })
+
+            window.location = "#youwin";
+        }else{
+            if (document.URL.indexOf('youwin') > -1) {
+                window.location = "index.html"; // return false; 
+            }
+            // do dislogged things
+        }
+    }else{ //verifica se estou deslogado
+
+    }
 }
 
 // Verifica se o Usuário ja esteve logado na plataforma
 function checkLogged(){
      if(localStorage.getItem('logged') !== 1){
         alert('Não estou logado')
+        logged = 0;
     }else{
         alert('Já estou logado')
+        logged = 1;
+    }
+}
+
+function checkStatus(){
+     if(localStorage.getItem('status') !== 1){
+        alert('Não estou ativo')
+        status = 0;
+    }else{
+        alert('Já estou ativo')
+        status = 1;
     }
 }
 
@@ -88,11 +136,9 @@ function checkConnection() {
     if(states[networkState] == 'disconected'){
         // alert('Connection type: ' + states[networkState]);
         conectado = 0;
-        startDisconectedApp();
-
     }else{
         // alert('CONECATO, Foda-se em qual tipo =]');
         conectado = 1;
-        startConectedApp();
     }
+    startApp();
 }
