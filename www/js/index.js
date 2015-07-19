@@ -50,6 +50,7 @@ var app = {
 };
 
 function checkConnection() {
+    alert('Chegamos')
     var networkState = navigator.connection.type;
 
     var states = {};
