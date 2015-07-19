@@ -35,8 +35,6 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         checkConnection();
-        startApp();
-
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -51,6 +49,7 @@ var app = {
     }
 };
 
+// Verifica se o Usuário está conectado a internet
 function checkConnection() {
     alert('Chegamos 1')
     var networkState = navigator.connection.type;
@@ -66,15 +65,34 @@ function checkConnection() {
     states[Connection.NONE]     = 'disconected';
 
     if(states[networkState] == 'disconected'){
-        alert('Connection type: ' + states[networkState]);
-        conectado = 0;
+        // alert('Connection type: ' + states[networkState]);
+        startDisconectedApp();
+
     }else{
-        alert('CONECATO, Foda-se em qual tipo =]');
-        conectado = 1;
+        // alert('CONECATO, Foda-se em qual tipo =]');
+        startConectedApp();
     }
 }
 
-function startApp(){
-    alert(conectado)
+// Inicia os trabalhos no App [1 = conectado / 0 = desconectado]
+function startDisconectedApp(){
+    alert('status da conexão: ' + conectado);
+    checkLogged();
 }
 
+
+function startConectedApp(){
+    alert('status da conexão: ' + conectado);
+    checkLogged();
+}
+
+// Verifica se o Usuário ja esteve logado na plataforma
+function checkLogged(){
+    if(localStorage.getItem('logged') > 0){
+        alert('Já estou logado')
+        logged = 1
+    }else{
+        alert('Não estou logado')
+        logged = 0
+    }
+}
