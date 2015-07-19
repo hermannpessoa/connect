@@ -35,6 +35,8 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         checkConnection();
+        startApp();
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -65,8 +67,14 @@ function checkConnection() {
 
     if(states[networkState] == 'disconected'){
         alert('Connection type: ' + states[networkState]);
+        conectado = 0;
     }else{
         alert('CONECATO, Foda-se em qual tipo =]');
+        conectado = 1;
     }
+}
+
+function startApp(){
+    alert(conectado)
 }
 
