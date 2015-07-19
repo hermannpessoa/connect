@@ -49,6 +49,29 @@ var app = {
     }
 };
 
+// Inicia os trabalhos no App [1 = conectado / 0 = desconectado]
+function startDisconectedAppjmio(){
+    alert('status da conexão: ' + conectado);
+    // checkLogged();
+}
+
+
+function startConectedApp(){
+    alert('status da conexão: ' + conectado);
+    // checkLogged();
+}
+
+// Verifica se o Usuário ja esteve logado na plataforma
+function checkLogged(){
+    if(localStorage.getItem('logged') > 0){
+        alert('Já estou logado')
+        logged = 1
+    }else{
+        alert('Não estou logado')
+        logged = 0
+    }
+}
+
 // Verifica se o Usuário está conectado a internet
 function checkConnection() {
     alert('Chegamos 1')
@@ -71,28 +94,5 @@ function checkConnection() {
     }else{
         // alert('CONECATO, Foda-se em qual tipo =]');
         startConectedApp();
-    }
-}
-
-// Inicia os trabalhos no App [1 = conectado / 0 = desconectado]
-function startDisconectedAppjmio(){
-    alert('status da conexão: ' + conectado);
-    // checkLogged();
-}
-
-
-function startConectedApp(){
-    alert('status da conexão: ' + conectado);
-    // checkLogged();
-}
-
-// Verifica se o Usuário ja esteve logado na plataforma
-function checkLogged(){
-    if(localStorage.getItem('logged') > 0){
-        alert('Já estou logado')
-        logged = 1
-    }else{
-        alert('Não estou logado')
-        logged = 0
     }
 }
