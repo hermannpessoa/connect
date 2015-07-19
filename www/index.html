@@ -35,21 +35,19 @@
         <title>WinApp</title>
     </head>
     <body ng-controller="winapp">
-        <div id="deviceready" class="blink">
-            <div class="loadd">
-                <div class="loaddContainer">
-                    <img src="images/loadd.gif">
-                    <p>Sincronizando dados...</p>
-                </div>
+        <div class="loadd">
+            <div class="loaddContainer">
+                <img src="images/loadd.gif">
+                <p>Sincronizando dados...</p>
             </div>
-            <div ng-view></div>
-            <!-- <div class="app">
-                <h1>PhoneGap</h1>
-                <div id="deviceready" class="blink">
-                    <p class="event listening">Connecting to Device</p>
-                    <p class="event received">Device is Ready</p>
-                </div>
-            </div> -->
+        </div>
+        <div ng-view></div>
+        <div class="app">
+            <!-- <h1>PhoneGap</h1> -->
+            <div id="deviceready" class="blink">
+                <!-- <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p> -->
+            </div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
