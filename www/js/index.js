@@ -50,19 +50,23 @@ var app = {
 };
 
 function checkConnection() {
-    alert('Chegamos')
+    alert('Chegamos 1')
     var networkState = navigator.connection.type;
 
     var states = {};
-    states[Connection.UNKNOWN]  = 'Unknown connection';
-    states[Connection.ETHERNET] = 'Ethernet connection';
-    states[Connection.WIFI]     = 'WiFi connection';
-    states[Connection.CELL_2G]  = 'Cell 2G connection';
-    states[Connection.CELL_3G]  = 'Cell 3G connection';
-    states[Connection.CELL_4G]  = 'Cell 4G connection';
-    states[Connection.CELL]     = 'Cell generic connection';
-    states[Connection.NONE]     = 'No network connection';
+    states[Connection.UNKNOWN]  = 'Unknown';
+    states[Connection.ETHERNET] = 'conected';
+    states[Connection.WIFI]     = 'conected';
+    states[Connection.CELL_2G]  = 'conected';
+    states[Connection.CELL_3G]  = 'conected';
+    states[Connection.CELL_4G]  = 'conected';
+    states[Connection.CELL]     = 'conected';
+    states[Connection.NONE]     = 'disconected';
 
-    alert('Connection type: ' + states[networkState]);
+    if(states[networkState] == 'disconected'){
+        alert('Connection type: ' + states[networkState]);
+    }else{
+        alert('CONECATO, Foda-se em qual tipo =]');
+    }
 }
 
