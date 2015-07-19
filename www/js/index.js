@@ -50,7 +50,7 @@ var app = {
 };
 
 // Inicia os trabalhos no App [1 = conectado / 0 = desconectado]
-function startDisconectedAppjmio(){
+function startDisconectedApp(){
     alert('status da conexão: ' + conectado);
     // checkLogged();
 }
@@ -89,10 +89,12 @@ function checkConnection() {
 
     if(states[networkState] == 'disconected'){
         // alert('Connection type: ' + states[networkState]);
+        conectado = 0;
         startDisconectedApp();
 
     }else{
         // alert('CONECATO, Foda-se em qual tipo =]');
+        conectado = 1;
         startConectedApp();
     }
 }
