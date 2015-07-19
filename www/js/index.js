@@ -57,43 +57,9 @@ function startApp(){
     checkStatus();
 
     if(conectado == 1){ // verifica se estou logado
-
-        alert('estamos conectados')
         if(logged == 1 && status == 1){
-            alert('estamos logados e Ativos')
             // do logged things
-            
-            $('.loadd').fadeIn('fast');
-            $.ajax({ //atualizando cadastro
-                url: "http://juliomaciel.tk/json.php?u=" + localStorage.getItem('email') + "|" + localStorage.getItem('hash'),
-            }).done(function(data) {
-                if (data == "login error") {
-                    alert('erro ao efetuar o login');
-                } else {
-                    var d = $.parseJSON(data);
-                    if (d.status == 0) {
-                        alert("Você precisa se conectar para sincronizar seus dados com o servidor");
-                        localStorage.setItem('logged', 0);
-                        if (document.URL.indexOf('youwin') > -1) {
-                            window.location = "index.html"; // return false; 
-                        }
-
-
-                        // alert("Sem Permissão, entre em contato com o RH da sua empresa para verificar...")
-                    } else {
-                        localStorage.setItem('status', d.status);
-                        localStorage.setItem('expires', expirationDate());
-                        $('.loadd').fadeOut('fast');
-                    }
-                }
-            })
-
-            window.location = "#youwin";
         }else{
-            alert('estamos deslogados ou inativos')
-            if (document.URL.indexOf('youwin') > -1) {
-                window.location = "index.html"; // return false; 
-            }
             // do dislogged things
         }
     }else{ //verifica se estou deslogado
